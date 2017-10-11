@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
  * Created by Administrator on 2017-10-10.
  */
 
-public class GallaryHorizonalScrollView extends HorizontalScrollView implements View.OnTouchListener {
+public class GallaryHorizonalScrollView extends HorizontalScrollView {
 
     private static final String TAG = "LiChao";
     private LinearLayout container;
@@ -54,16 +54,23 @@ public class GallaryHorizonalScrollView extends HorizontalScrollView implements 
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         container = new LinearLayout(getContext());
         container.setLayoutParams(params);
-        setOnTouchListener(this);
+        //setOnTouchListener(this);
     }
 
-    @Override
+    /*@Override
     public boolean onTouch(View v, MotionEvent event) {
         if(event.getAction()== MotionEvent.ACTION_MOVE){
             //渐变图片
             reveal();
         }
         return false;
+    }*/
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        //渐变图片
+        reveal();
     }
 
     private void reveal() {
